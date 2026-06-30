@@ -46,7 +46,7 @@ export const products: Product[] = [
     id: "p6",
     name: "AeroSpike Pro - Titanium Edition",
     price: 449,
-    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&q=80&w=400",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9ECfzKR2VNv3wRQZe2AOqQqpVYgzFV8ehfw&s",
     category: "Tracker",
   },
   {
