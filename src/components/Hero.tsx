@@ -5,18 +5,14 @@ import ProductMockup from "./ProductMockup";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
   const mockupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
-      if (!heroRef.current || !textRef.current || !mockupRef.current) return;
+      if (!heroRef.current || !mockupRef.current) return;
       
       const scrollY = window.scrollY;
       const progress = Math.min(scrollY / window.innerHeight, 1);
-      
-      // Smoother scrollytelling parallax effects
-      textRef.current.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
       
       mockupRef.current.style.transform = `translate3d(0, ${scrollY * 0.1}px, 0) scale(${1 + progress * 0.05})`;
     };
@@ -41,7 +37,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-2">
         {/* Left: Text & CTA */}
-        <div ref={textRef} className="text-center lg:text-left will-change-transform z-20 pt-10">
+        <div className="text-center lg:text-left z-20 pt-10">
           <div className="animate-fade-up inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 backdrop-blur-md shadow-[0_0_15px_rgba(124,58,237,0.1)] transition-transform hover:scale-105 cursor-default">
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
