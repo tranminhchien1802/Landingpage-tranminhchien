@@ -18,7 +18,7 @@ export const products: Product[] = [
     id: "p2",
     name: "Elite Performance Strap (Neon)",
     price: 39,
-    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=400",
     category: "Accessory",
   },
   {
@@ -53,14 +53,14 @@ export const products: Product[] = [
     id: "p7",
     name: "Sport Wireless Earbuds",
     price: 129,
-    image: "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&q=80&w=400",
     category: "Audio",
   },
   {
     id: "p8",
     name: "Performance Sensor Pod",
     price: 89,
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
     category: "Sensor",
   },
 ];
