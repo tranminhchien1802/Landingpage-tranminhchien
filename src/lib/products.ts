@@ -25,7 +25,7 @@ export const products: Product[] = [
     id: "p3",
     name: "Magnetic Charging Dock",
     price: 49,
-    image: "https://www.cnet.com/a/img/resize/6b86727c3ec07ffc8d7b8edffe0c9348d554b8b6/hub/2015/11/18/eb04cffa-49ea-48eb-b258-ad292e68f735/apple-watch-magnetic-charging-dock-34rcharging-screen.png?auto=webp&width=1200",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTij8RYRJWHIU3W_hnOMDpCPCm5Pvn9T433CQ&s",
     category: "Accessory",
   },
   {
