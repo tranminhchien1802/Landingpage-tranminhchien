@@ -1,20 +1,36 @@
+"use client";
+
+import { useReveal } from "@/lib/useReveal";
+
 export default function Features() {
+  const { ref, revealed } = useReveal(0.1);
+
   return (
-    <section id="features" className="px-4 py-24 sm:py-32">
+    <section id="features" className="px-4 py-24 sm:py-32" ref={ref}>
       <div className="mx-auto max-w-7xl">
-        <div className="text-center">
+        <div
+          className={`text-center transition-all duration-700 ${
+            revealed ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Engineered for Peak Performance
           </h2>
           <p className="mt-4 text-muted">
-            Every metric matters. AeroSpike Pro captures what your body does in motion.
+            Every metric matters. AeroSpike Pro captures what your body does in
+            motion.
           </p>
         </div>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((f) => (
+          {features.map((f, i) => (
             <div
               key={f.title}
-              className="group rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+              className={`group rounded-2xl border border-border bg-card p-8 transition-all duration-700 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 ${
+                revealed
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-12 opacity-0"
+              }`}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 {f.icon}

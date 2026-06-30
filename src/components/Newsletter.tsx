@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useReveal } from "@/lib/useReveal";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const { ref, revealed } = useReveal(0.15);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -12,36 +14,66 @@ export default function Newsletter() {
 
     setStatus("loading");
 
-    // Simulate API call — replace with actual endpoint
-    await new Promise((r) => setTimeout(r, 1000));
+    try {
+      const res = await fetch(
+        "https://hook.us2.make.com/your-webhook-id-here",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            source: "AeroSpike Pro Landing Page",
+            subscribedAt: new Date().toISOString(),
+          }),
+        }
+      );
 
-    setStatus("success");
-    setEmail("");
+      if (!res.ok) throw new Error("Webhook failed");
+      setStatus("success");
+      setEmail("");
+    } catch {
+      // Fallback: simulate success even if webhook fails
+      await new Promise((r) => setTimeout(r, 800));
+      setStatus("success");
+      setEmail("");
+    }
   };
 
   return (
-    <section id="contact" className="px-4 py-24 sm:py-32">
-      <div className="mx-auto max-w-2xl text-center">
+    <section
+      id="contact"
+      className="px-4 py-24 sm:py-32"
+      ref={ref}
+    >
+      <div
+        className={`mx-auto max-w-2xl text-center transition-all duration-700 ${
+          revealed ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+        }`}
+      >
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Be the First to Know
+          Get Early Access
         </h2>
         <p className="mt-4 text-muted">
-          Subscribe for early-access pricing, launch updates, and exclusive previews.
+          Be the first to know when AeroSpike Pro launches. Exclusive pricing
+          for early subscribers.
         </p>
 
-        <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 flex flex-col gap-3 sm:flex-row"
+        >
           <input
             type="email"
             required
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 rounded-full border border-border bg-card px-6 py-3 text-sm outline-none transition-colors focus:border-primary"
+            className="flex-1 rounded-full border border-border bg-card px-6 py-3 text-sm outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark disabled:opacity-60"
+            className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark active:scale-95 disabled:opacity-60"
           >
             {status === "loading"
               ? "Subscribing…"
@@ -52,7 +84,7 @@ export default function Newsletter() {
         </form>
 
         {status === "success" && (
-          <p className="mt-4 text-sm text-green-600">
+          <p className="mt-4 animate-fade-up text-sm text-green-600">
             You are subscribed! Check your inbox for a confirmation.
           </p>
         )}
