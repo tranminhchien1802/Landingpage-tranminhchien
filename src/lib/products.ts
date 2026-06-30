@@ -53,7 +53,7 @@ export const products: Product[] = [
     id: "p7",
     name: "Sport Wireless Earbuds",
     price: 129,
-    image: "https://images-na.ssl-images-amazon.com/images/I/51V2wflThBL.jpg",
+    image: "https://antuan.vn/public/uploads/2020/10/tai-nghe-bose-sport-earbuds-2.jpg",
     category: "Audio",
   },
   {
