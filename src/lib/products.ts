@@ -11,7 +11,7 @@ export const products: Product[] = [
     id: "p1",
     name: "AeroSpike Pro Band",
     price: 299,
-    image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b0?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400",
     category: "Tracker",
   },
   {
@@ -53,14 +53,14 @@ export const products: Product[] = [
     id: "p7",
     name: "Sport Wireless Earbuds",
     price: 129,
-    image: "https://images.unsplash.com/photo-1590658268037-6bf12f032f55?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&q=80&w=400",
     category: "Audio",
   },
   {
     id: "p8",
     name: "Performance Sensor Pod",
     price: 89,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=400",
     category: "Sensor",
   },
 ];
