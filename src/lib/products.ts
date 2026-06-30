@@ -58,9 +58,9 @@ export const products: Product[] = [
   },
   {
     id: "p8",
-    name: "Performance Sensor Pod",
+    name: "AeroSpike Recovery Band",
     price: 89,
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-    category: "Sensor",
+    category: "Accessory",
   },
 ];
