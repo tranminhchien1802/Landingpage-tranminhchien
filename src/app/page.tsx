@@ -16,8 +16,8 @@ export default function Home() {
         <Features />
         <Specs />
         <ShopSection />
-        <Newsletter />
         <RecentlyViewed />
+        <Newsletter />
       </main>
       <Footer />
     </>
