@@ -7,7 +7,7 @@ export default function Specs() {
             Technical Specifications
           </h2>
           <p className="mt-4 text-muted">
-            Precision-engineered for performance and reliability.
+            Precision sensors. Pro-grade durability. Built for the grind.
           </p>
         </div>
         <div className="mt-16 overflow-hidden rounded-2xl border border-border">
@@ -31,14 +31,16 @@ export default function Specs() {
 }
 
 const specs = [
-  { label: "Processor", value: "Quad-core Cortex-A76 @ 2.4 GHz + NPU 6 TOPS" },
-  { label: "Memory", value: "8 GB LPDDR5 RAM" },
-  { label: "Storage", value: "64 GB eMMC 5.1" },
-  { label: "Connectivity", value: "Wi-Fi 7, Bluetooth 5.4, Zigbee 3.0, Thread, Matter" },
-  { label: "Ports", value: "USB-C (1x), HDMI 2.1 (1x), Ethernet (1x)" },
-  { label: "Audio", value: "Dual far-field microphones, 2W speaker" },
-  { label: "Power", value: "12V DC, 2A (USB-C PD compatible)" },
-  { label: "Dimensions", value: "118 × 118 × 28 mm" },
-  { label: "Weight", value: "195 g" },
-  { label: "Operating Range", value: "0 °C to 40 °C, 10–90% RH" },
+  { label: "Processor", value: "Dual-core ARM Cortex-M33 + AI NPU 2 TOPS" },
+  { label: "Sensors", value: "6-axis IMU, Barometer, PPG Heart Rate, Skin Temperature" },
+  { label: "Sample Rate", value: "Up to 1000 Hz (impact), 200 Hz (motion)" },
+  { label: "Battery", value: "280 mAh Li-Po, up to 14 days (typical use)" },
+  { label: "Charging", value: "Magnetic USB-C, 0–100% in 45 min" },
+  { label: "Connectivity", value: "Bluetooth 5.4, ANT+, Wi-Fi b/g/n" },
+  { label: "Water Resistance", value: "IP68 (10 m, 2 hours)" },
+  { label: "Display", value: "1.43\" AMOLED, 466 × 466 px, Always-On" },
+  { label: "Weight", value: "38 g (band included)" },
+  { label: "Materials", value: "Titanium alloy bezel, fluoroelastomer strap" },
+  { label: "Operating Range", value: "-10 °C to 50 °C" },
+  { label: "Compatibility", value: "iOS 16+ / Android 12+" },
 ];

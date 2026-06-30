@@ -13,19 +13,19 @@ export default function Hero() {
         {/* Left: Text */}
         <div className="text-center lg:text-left">
           <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-primary uppercase">
-            Next-Gen Smart Living
+            For Elite Athletes
           </span>
           <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            Your Home,
+            Push Beyond
             <br />
             <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Brilliantly Intelligent
+              Your Limits
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-            AuraSync is the AI-powered hub that learns your habits, automates
-            your routines, and puts total control of your smart home in the palm
-            of your hand.
+            AeroSpike Pro is the AI-powered performance band that tracks
+            vertical jump, reaction time, swing speed, and impact force — giving
+            pro athletes real-time data to train smarter.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
             <a
@@ -38,7 +38,7 @@ export default function Hero() {
               href="#features"
               className="rounded-full border border-border px-8 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-card-hover"
             >
-              Explore Features
+              See Features
             </a>
           </div>
         </div>

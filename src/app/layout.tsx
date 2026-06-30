@@ -16,17 +16,17 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "AuraSync — Smart Home AI Hub",
-    template: "%s | AuraSync",
+    default: "AeroSpike Pro — AI Sports Performance Band",
+    template: "%s | AeroSpike Pro",
   },
   description:
-    "AuraSync is the next-generation AI-powered smart home hub. Control your home with voice, automate routines, and monitor energy usage in real time.",
+    "AeroSpike Pro is an AI-powered wristband for professional athletes. Track vertical jump, reaction time, swing speed, and landing force in real time.",
   openGraph: {
-    title: "AuraSync — Smart Home AI Hub",
+    title: "AeroSpike Pro — AI Sports Performance Band",
     description:
-      "The next-generation AI-powered smart home hub. Voice control, smart automation, real-time energy monitoring.",
+      "AI-powered wristband for pro athletes. Real-time tracking of jump height, reaction time, speed, and impact force.",
     url: "https://landingpage-tranminhchien.vercel.app",
-    siteName: "AuraSync",
+    siteName: "AeroSpike Pro",
     locale: "en_US",
     type: "website",
   },

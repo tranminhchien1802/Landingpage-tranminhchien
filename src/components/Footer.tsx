@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="border-t border-border px-4 py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-sm text-muted">
-          &copy; {new Date().getFullYear()} AuraSync. All rights reserved.
+          &copy; {new Date().getFullYear()} AeroSpike Pro. All rights reserved.
         </p>
         <div className="flex gap-6">
           <a
