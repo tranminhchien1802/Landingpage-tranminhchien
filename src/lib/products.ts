@@ -39,7 +39,7 @@ export const products: Product[] = [
     id: "p5",
     name: "Pro Heart Rate Armband",
     price: 59,
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400",
+    image: "https://armor-x.com/cdn/shop/files/GO-HRM04-ARMOR-X-Heart-Rate-Monitor-Armband-Support-Dual-Protocol-of-ANT_-and-Bluetooth-for-Running-Cycling-Yoga-Gym-Sports_1.jpg?v=1710121569",
     category: "Accessory",
   },
   {
