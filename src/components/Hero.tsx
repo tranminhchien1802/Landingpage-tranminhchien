@@ -17,7 +17,6 @@ export default function Hero() {
       
       // Smoother scrollytelling parallax effects
       textRef.current.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
-      textRef.current.style.opacity = `${1 - progress * 1.2}`;
       
       mockupRef.current.style.transform = `translate3d(0, ${scrollY * 0.1}px, 0) scale(${1 + progress * 0.05})`;
     };
