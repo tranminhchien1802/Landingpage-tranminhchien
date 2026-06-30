@@ -18,7 +18,7 @@ export const products: Product[] = [
     id: "p2",
     name: "Elite Performance Strap (Neon)",
     price: 39,
-    image: "https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=400",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTARnWBY-w6Dp43wVZTzFZSalxqyyb8mnuYA&s",
     category: "Accessory",
   },
   {
