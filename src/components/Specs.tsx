@@ -8,7 +8,7 @@ export default function Specs() {
   return (
     <section
       id="specs"
-      className="bg-card px-4 py-24 sm:py-32"
+      className="bg-card px-4 py-16 sm:py-24"
       ref={ref}
     >
       <div className="mx-auto max-w-7xl">

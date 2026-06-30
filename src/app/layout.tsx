@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+import { StoreProvider } from "@/lib/StoreContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,7 +46,7 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
-        {children}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );

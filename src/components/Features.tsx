@@ -6,7 +6,7 @@ export default function Features() {
   const { ref, revealed } = useReveal(0.1);
 
   return (
-    <section id="features" className="px-4 py-24 sm:py-32" ref={ref}>
+    <section id="features" className="px-4 py-16 sm:py-24" ref={ref}>
       <div className="mx-auto max-w-7xl">
         <div
           className={`text-center transition-all duration-700 ${

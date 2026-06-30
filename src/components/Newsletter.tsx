@@ -42,7 +42,7 @@ export default function Newsletter() {
   return (
     <section
       id="contact"
-      className="px-4 py-24 sm:py-32"
+      className="px-4 py-16 sm:py-20"
       ref={ref}
     >
       <div
