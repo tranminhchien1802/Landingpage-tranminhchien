@@ -53,7 +53,7 @@ export const products: Product[] = [
     id: "p7",
     name: "Sport Wireless Earbuds",
     price: 129,
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&q=80&w=400",
+    image: "https://images-na.ssl-images-amazon.com/images/I/51V2wflThBL.jpg",
     category: "Audio",
   },
   {
