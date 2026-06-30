@@ -32,14 +32,14 @@ export const products: Product[] = [
     id: "p4",
     name: "AeroSpike Pro - Stealth Edition",
     price: 329,
-    image: "https://images.unsplash.com/photo-1617043786394-f977fa12eddf?auto=format&fit=crop&q=80&w=400",
+    image: "https://product.hstatic.net/1000203080/product/841301056-8_b624187e5d46473b97b65e9dc920955e_master.jpg",
     category: "Tracker",
   },
   {
     id: "p5",
     name: "AeroSpike Pro Band",
     price: 299,
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400",
+    image: "https://uagvietnam.com/wp-content/uploads/2020/05/day-deo-apple-watch-42mm-_-44mm-uag-scout-silicone_41_bengovn_1.png",
     category: "Tracker",
   },
   {

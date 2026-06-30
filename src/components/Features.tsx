@@ -25,17 +25,19 @@ export default function Features() {
           {features.map((f, i) => (
             <div
               key={f.title}
-              className={`group rounded-2xl border border-border bg-card p-8 transition-all duration-700 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 ${
+              className={`group rounded-2xl border border-border bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 ${
                 revealed
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-primary group-hover:text-white">
                 {f.icon}
               </div>
-              <h3 className="text-lg font-semibold">{f.title}</h3>
+              <h3 className="text-lg font-semibold transition-colors duration-500 group-hover:text-primary">
+                {f.title}
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 {f.description}
               </p>

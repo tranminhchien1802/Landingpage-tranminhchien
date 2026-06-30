@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { StoreProvider } from "@/lib/StoreContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,8 +33,6 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 };
-
-import { StoreProvider } from "@/lib/StoreContext";
 
 export default function RootLayout({
   children,
