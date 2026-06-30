@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { useStore } from "@/lib/StoreContext";
 
@@ -119,7 +120,7 @@ export default function Header() {
                 <ul className="space-y-4">
                   {cart.map((item) => (
                     <li key={item.id} className="flex gap-4 border-b border-border pb-4">
-                      <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-md" />
+                      <Image src={item.image} alt={item.name} width={64} height={64} className="object-cover rounded-md" />
                       <div className="flex-1">
                         <h4 className="font-semibold text-sm">{item.name}</h4>
                         <p className="text-muted text-sm">${item.price} x {item.quantity}</p>
@@ -162,7 +163,7 @@ export default function Header() {
                 <ul className="space-y-4">
                   {favorites.map((item) => (
                     <li key={item.id} className="flex gap-4 border-b border-border pb-4">
-                      <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-md" />
+                      <Image src={item.image} alt={item.name} width={64} height={64} className="object-cover rounded-md" />
                       <div className="flex-1">
                         <h4 className="font-semibold text-sm">{item.name}</h4>
                         <p className="text-muted text-sm">${item.price}</p>

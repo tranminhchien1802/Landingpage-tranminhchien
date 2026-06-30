@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useStore } from "@/lib/StoreContext";
 import { useReveal } from "@/lib/useReveal";
 
@@ -28,11 +29,12 @@ export default function RecentlyViewed() {
             return (
               <div key={product.id} className="min-w-[240px] max-w-[240px] flex-shrink-0 group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/30">
                 <div className="relative aspect-square overflow-hidden bg-[#F3F4F6]">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                    loading="lazy"
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="240px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="flex flex-col p-4">

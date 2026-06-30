@@ -1,11 +1,13 @@
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import Specs from "@/components/Specs";
-import ShopSection from "@/components/ShopSection";
-import RecentlyViewed from "@/components/RecentlyViewed";
-import Newsletter from "@/components/Newsletter";
-import Footer from "@/components/Footer";
+
+const Features = dynamic(() => import("@/components/Features"), { ssr: true });
+const Specs = dynamic(() => import("@/components/Specs"), { ssr: true });
+const ShopSection = dynamic(() => import("@/components/ShopSection"), { ssr: true });
+const RecentlyViewed = dynamic(() => import("@/components/RecentlyViewed"), { ssr: true });
+const Newsletter = dynamic(() => import("@/components/Newsletter"), { ssr: true });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: true });
 
 export default function Home() {
   return (

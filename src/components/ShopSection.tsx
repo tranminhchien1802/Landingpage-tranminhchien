@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useStore } from "@/lib/StoreContext";
 import { products } from "@/lib/products";
 import { useReveal } from "@/lib/useReveal";
@@ -39,11 +40,12 @@ export default function ShopSection() {
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div className="relative aspect-square overflow-hidden bg-[#F3F4F6]">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                    loading="lazy"
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <button 
                     onClick={(e) => { e.stopPropagation(); toggleFavorite(product); }}
