@@ -7,10 +7,8 @@ export default function RecentlyViewed() {
   const { recentlyViewed, toggleFavorite, favorites, addToCart } = useStore();
   const { ref, revealed } = useReveal(0.1);
 
-  if (recentlyViewed.length === 0) return null;
-
   return (
-    <section className="border-t border-border bg-background px-4 py-16" ref={ref}>
+    <section className={`border-t border-border bg-background px-4 py-16 ${recentlyViewed.length === 0 ? "hidden" : ""}`} ref={ref}>
       <div className="mx-auto max-w-7xl">
         <h2 
           className={`text-2xl font-bold transition-all duration-700 ${

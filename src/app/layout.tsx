@@ -44,6 +44,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
         <StoreProvider>{children}</StoreProvider>
