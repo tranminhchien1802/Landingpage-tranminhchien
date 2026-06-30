@@ -25,7 +25,7 @@ export const products: Product[] = [
     id: "p3",
     name: "Magnetic Charging Dock",
     price: 49,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTij8RYRJWHIU3W_hnOMDpCPCm5Pvn9T433CQ&s",
+    image: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1581110169-belkin-apple-watch-stand-1581110138.jpg?crop=1xw:1xh;center,top&resize=980:*",
     category: "Accessory",
   },
   {
