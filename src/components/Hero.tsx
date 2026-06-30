@@ -35,9 +35,9 @@ export default function Hero() {
         <div className="absolute top-[20%] right-[-5%] h-[500px] w-[500px] rounded-full bg-secondary/15 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-2">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-16">
         {/* Left: Text & CTA */}
-        <div className="text-center lg:text-left z-20 pt-10">
+        <div className="text-center lg:text-left z-20">
           <div className="animate-fade-up inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 backdrop-blur-md shadow-[0_0_15px_rgba(124,58,237,0.1)] transition-transform hover:scale-105 cursor-default">
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
@@ -109,15 +109,15 @@ export default function Hero() {
         </div>
 
         {/* Right: Enhanced Product mockup */}
-        <div className="animate-fade-in animate-delay-300 relative flex items-center justify-center lg:justify-end">
+        <div className="animate-fade-in animate-delay-300 relative flex items-center justify-center">
           {/* Intense Glow Behind Product */}
           <div className="absolute top-1/2 left-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_60%)] opacity-15 blur-[60px]"></div>
           
           {/* Tech Ring Decoration */}
-          <div className="absolute top-1/2 left-1/2 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/20 border-dashed animate-[spin_60s_linear_infinite]"></div>
-          <div className="absolute top-1/2 left-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-secondary/20 border-dotted animate-[spin_40s_linear_infinite_reverse]"></div>
+          <div className="absolute top-1/2 left-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/20 border-dashed animate-[spin_60s_linear_infinite] max-lg:hidden"></div>
+          <div className="absolute top-1/2 left-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-secondary/20 border-dotted animate-[spin_40s_linear_infinite_reverse] max-lg:hidden"></div>
 
-          <div ref={mockupRef} className="relative will-change-transform animate-float drop-shadow-[0_30px_50px_rgba(124,58,237,0.25)] z-10 w-[280px] sm:w-[320px] md:w-[400px]">
+          <div ref={mockupRef} className="relative will-change-transform animate-float drop-shadow-[0_30px_50px_rgba(124,58,237,0.25)] z-10 w-[240px] sm:w-[280px] md:w-[340px]">
             <ProductMockup />
           </div>
         </div>
