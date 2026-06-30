@@ -35,4 +35,32 @@ export const products: Product[] = [
     image: "https://images.unsplash.com/photo-1617043786394-f977fa12eddf?auto=format&fit=crop&q=80&w=400",
     category: "Tracker",
   },
+  {
+    id: "p5",
+    name: "Pro Heart Rate Armband",
+    price: 59,
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400",
+    category: "Accessory",
+  },
+  {
+    id: "p6",
+    name: "AeroSpike Pro - Titanium Edition",
+    price: 449,
+    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&q=80&w=400",
+    category: "Tracker",
+  },
+  {
+    id: "p7",
+    name: "Sport Wireless Earbuds",
+    price: 129,
+    image: "https://images.unsplash.com/photo-1590658268037-6bf12f032f55?auto=format&fit=crop&q=80&w=400",
+    category: "Audio",
+  },
+  {
+    id: "p8",
+    name: "Performance Sensor Pod",
+    price: 89,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=400",
+    category: "Sensor",
+  },
 ];
