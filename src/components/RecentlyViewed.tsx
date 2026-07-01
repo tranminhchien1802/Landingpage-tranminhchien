@@ -28,7 +28,7 @@ export default function RecentlyViewed() {
             const isFav = favorites.some((f) => f.id === product.id);
             return (
               <div key={product.id} className="min-w-[240px] max-w-[240px] flex-shrink-0 group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/30">
-                <div className="relative aspect-square overflow-hidden bg-[#F3F4F6]">
+                <div className="relative aspect-square overflow-hidden bg-image-bg">
                   <Image
                     src={product.image}
                     alt={product.name}

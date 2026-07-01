@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useStore } from "@/lib/StoreContext";
+import { useTheme } from "@/lib/ThemeContext";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -16,6 +17,7 @@ export default function Header() {
   const [favOpen, setFavOpen] = useState(false);
   
   const { cart, removeFromCart, favorites, toggleFavorite } = useStore();
+  const { theme, toggleTheme } = useTheme();
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
   const favCount = favorites.length;
@@ -70,6 +72,24 @@ export default function Header() {
                 <span className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-white">
                   {cartCount}
                 </span>
+              )}
+            </button>
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-muted hover:text-primary transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {theme === "dark" ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5" />
+                  <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
               )}
             </button>
 

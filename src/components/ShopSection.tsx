@@ -39,7 +39,7 @@ export default function ShopSection() {
                 }`}
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <div className="relative aspect-square overflow-hidden bg-[#F3F4F6]">
+                <div className="relative aspect-square overflow-hidden bg-image-bg">
                   <Image
                     src={product.image}
                     alt={product.name}

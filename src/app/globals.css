@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-background: #ffffff;
   --color-foreground: #111827;
@@ -15,8 +17,77 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-mono);
 
+  --color-image-bg: #f3f4f6;
+
   --breakpoint-xs: 475px;
 }
+
+/*
+ * Dark mode
+ * Tailwind v4 compiles utilities with resolved values, not var().
+ * So we must explicitly override every themed utility class.
+ */
+.dark {
+  --color-background: #0f172a;
+  --color-foreground: #f1f5f9;
+  --color-primary: #8b5cf6;
+  --color-primary-dark: #7c3aed;
+  --color-secondary: #fb923c;
+  --color-accent: #fbbf24;
+  --color-muted: #94a3b8;
+  --color-border: #334155;
+  --color-card: #1e293b;
+  --color-card-hover: #334155;
+  --color-image-bg: #1e293b;
+  color-scheme: dark;
+}
+
+/* Backgrounds */
+.dark .bg-background { background-color: #0f172a; }
+.dark .bg-background\/50 { background-color: color-mix(in srgb, #0f172a 50%, transparent); }
+.dark .bg-background\/80 { background-color: color-mix(in srgb, #0f172a 80%, transparent); }
+.dark .bg-foreground { background-color: #f1f5f9; }
+.dark .bg-card { background-color: #1e293b; }
+.dark .bg-card\/60 { background-color: color-mix(in srgb, #1e293b 60%, transparent); }
+.dark .bg-card-hover { background-color: #334155; }
+.dark .bg-image-bg { background-color: #1e293b; }
+.dark .bg-primary { background-color: #8b5cf6; }
+.dark .bg-primary\/5 { background-color: color-mix(in srgb, #8b5cf6 5%, transparent); }
+.dark .bg-primary\/10 { background-color: color-mix(in srgb, #8b5cf6 10%, transparent); }
+.dark .bg-primary\/20 { background-color: color-mix(in srgb, #8b5cf6 20%, transparent); }
+.dark .bg-secondary { background-color: #fb923c; }
+.dark .bg-secondary\/15 { background-color: color-mix(in srgb, #fb923c 15%, transparent); }
+
+/* Text */
+.dark .text-foreground { color: #f1f5f9; }
+.dark .text-muted { color: #94a3b8; }
+.dark .text-background { color: #0f172a; }
+.dark .text-primary { color: #8b5cf6; }
+.dark .text-secondary { color: #fb923c; }
+
+/* Borders */
+.dark .border-border { border-color: #334155; }
+.dark .border-border\/40 { border-color: color-mix(in srgb, #334155 40%, transparent); }
+.dark .border-border\/80 { border-color: color-mix(in srgb, #334155 80%, transparent); }
+.dark .border-primary\/20 { border-color: color-mix(in srgb, #8b5cf6 20%, transparent); }
+.dark .border-secondary\/20 { border-color: color-mix(in srgb, #fb923c 20%, transparent); }
+
+/* Hover (no media query needed — hover pseudo-class only fires on hover-capable devices) */
+.dark .hover\:bg-primary:hover { background-color: #8b5cf6; }
+.dark .hover\:bg-primary-dark:hover { background-color: #7c3aed; }
+.dark .hover\:bg-muted\/10:hover { background-color: color-mix(in srgb, #94a3b8 10%, transparent); }
+.dark .hover\:bg-background:hover { background-color: #0f172a; }
+.dark .hover\:text-foreground:hover { color: #f1f5f9; }
+.dark .hover\:text-primary:hover { color: #8b5cf6; }
+
+/* Group hover */
+.dark .group-hover\:bg-primary { background-color: #8b5cf6; }
+.dark .group-hover\:text-primary { color: #8b5cf6; }
+.dark .group-hover\:text-white { color: #fff; }
+
+/* Focus */
+.dark .focus\:border-primary:focus { border-color: #8b5cf6; }
+.dark .focus\:ring-primary\/20:focus { --tw-ring-color: color-mix(in srgb, #8b5cf6 20%, transparent); }
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(30px); }
