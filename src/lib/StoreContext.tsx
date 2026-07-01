@@ -23,16 +23,26 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [recentlyViewed, setRecentlyViewed] = useState<Product[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const STORE_VERSION = 2;
+
   // Load from local storage on mount
   useEffect(() => {
     try {
-      const savedCart = localStorage.getItem("aero_cart");
-      const savedFavs = localStorage.getItem("aero_favorites");
-      const savedRecents = localStorage.getItem("aero_recently_viewed");
+      const ver = localStorage.getItem("aero_store_version");
+      if (ver !== String(STORE_VERSION)) {
+        localStorage.removeItem("aero_cart");
+        localStorage.removeItem("aero_favorites");
+        localStorage.removeItem("aero_recently_viewed");
+        localStorage.setItem("aero_store_version", String(STORE_VERSION));
+      } else {
+        const savedCart = localStorage.getItem("aero_cart");
+        const savedFavs = localStorage.getItem("aero_favorites");
+        const savedRecents = localStorage.getItem("aero_recently_viewed");
 
-      if (savedCart) setCart(JSON.parse(savedCart));
-      if (savedFavs) setFavorites(JSON.parse(savedFavs));
-      if (savedRecents) setRecentlyViewed(JSON.parse(savedRecents));
+        if (savedCart) setCart(JSON.parse(savedCart));
+        if (savedFavs) setFavorites(JSON.parse(savedFavs));
+        if (savedRecents) setRecentlyViewed(JSON.parse(savedRecents));
+      }
     } catch (e) {
       console.error("Failed to load store data", e);
     }

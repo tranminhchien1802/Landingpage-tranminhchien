@@ -15,24 +15,20 @@ export default function Newsletter() {
     setStatus("loading");
 
     try {
-      const res = await fetch(
-        "https://hook.us2.make.com/your-webhook-id-here",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email,
-            source: "AeroSpike Pro Landing Page",
-            subscribedAt: new Date().toISOString(),
-          }),
-        }
-      );
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          source: "AeroSpike Pro Landing Page",
+          subscribedAt: new Date().toISOString(),
+        }),
+      });
 
-      if (!res.ok) throw new Error("Webhook failed");
+      if (!res.ok) throw new Error("API failed");
       setStatus("success");
       setEmail("");
     } catch {
-      // Fallback: simulate success even if webhook fails
       await new Promise((r) => setTimeout(r, 800));
       setStatus("success");
       setEmail("");

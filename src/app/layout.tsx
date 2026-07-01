@@ -4,7 +4,9 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "@/lib/StoreContext";
 import { ThemeProvider } from "@/lib/ThemeContext";
+import { ToastProvider } from "@/lib/ToastContext";
 
+import Analytics from "@/components/Analytics";
 const Chatbot = dynamic(() => import("@/components/Chatbot"));
 
 const inter = Inter({
@@ -60,7 +62,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
         <ThemeProvider>
-          <StoreProvider>{children}</StoreProvider>
+          <StoreProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </StoreProvider>
+          <Analytics />
           <Chatbot />
         </ThemeProvider>
       </body>

@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import { useStore } from "@/lib/StoreContext";
+import { useToast } from "@/lib/ToastContext";
 import { products } from "@/lib/products";
 import { useReveal } from "@/lib/useReveal";
 
 export default function ShopSection() {
   const { addToCart, toggleFavorite, favorites, addRecentlyViewed } = useStore();
+  const { toast } = useToast();
   const { ref, revealed } = useReveal(0.1);
 
   return (
@@ -48,7 +50,7 @@ export default function ShopSection() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <button 
-                    onClick={(e) => { e.stopPropagation(); toggleFavorite(product); }}
+                    onClick={(e) => { e.stopPropagation(); toggleFavorite(product); toast(isFav ? "Removed from favorites" : "Added to favorites"); }}
                     className="absolute right-3 top-3 rounded-full bg-background/80 p-2 backdrop-blur-sm transition-colors hover:bg-background"
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill={isFav ? "var(--color-primary)" : "none"} stroke={isFav ? "var(--color-primary)" : "currentColor"} strokeWidth="2">
@@ -65,7 +67,7 @@ export default function ShopSection() {
                   <p className="mt-1 text-lg font-bold text-primary">${product.price}</p>
                   
                   <button
-                    onClick={(e) => { e.stopPropagation(); addToCart(product); }}
+                    onClick={(e) => { e.stopPropagation(); addToCart(product); toast(`${product.name} added to cart`); }}
                     className="mt-4 w-full rounded-full bg-primary/10 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
                   >
                     Add to Cart

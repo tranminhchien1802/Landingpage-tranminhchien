@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useStore } from "@/lib/StoreContext";
+import { useToast } from "@/lib/ToastContext";
 import { useReveal } from "@/lib/useReveal";
 
 export default function RecentlyViewed() {
   const { recentlyViewed, toggleFavorite, favorites, addToCart } = useStore();
+  const { toast } = useToast();
   const { ref, revealed } = useReveal(0.1);
 
   return (
@@ -43,13 +45,13 @@ export default function RecentlyViewed() {
                   
                   <div className="mt-3 flex gap-2">
                     <button
-                      onClick={() => addToCart(product)}
+                      onClick={() => { addToCart(product); toast(`${product.name} added to cart`); }}
                       className="flex-1 rounded-md bg-foreground py-1.5 text-xs font-semibold text-background transition-colors hover:bg-primary"
                     >
                       Add
                     </button>
                     <button 
-                      onClick={() => toggleFavorite(product)}
+                      onClick={() => { const removed = favorites.some(f => f.id === product.id); toggleFavorite(product); toast(removed ? "Removed from favorites" : "Added to favorites"); }}
                       className="flex items-center justify-center rounded-md border border-border px-3 transition-colors hover:bg-muted/10"
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill={isFav ? "var(--color-primary)" : "none"} stroke={isFav ? "var(--color-primary)" : "currentColor"} strokeWidth="2">

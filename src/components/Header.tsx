@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useStore } from "@/lib/StoreContext";
+import { useToast } from "@/lib/ToastContext";
 import { useTheme } from "@/lib/ThemeContext";
 
 const navLinks = [
@@ -17,6 +18,7 @@ export default function Header() {
   const [favOpen, setFavOpen] = useState(false);
   
   const { cart, removeFromCart, favorites, toggleFavorite } = useStore();
+  const { toast } = useToast();
   const { theme, toggleTheme } = useTheme();
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -145,7 +147,7 @@ export default function Header() {
                         <h4 className="font-semibold text-sm">{item.name}</h4>
                         <p className="text-muted text-sm">${item.price} x {item.quantity}</p>
                       </div>
-                      <button onClick={() => removeFromCart(item.id)} className="text-red-500 text-sm h-fit">Remove</button>
+                      <button onClick={() => { removeFromCart(item.id); toast(`${item.name} removed from cart`, "error"); }} className="text-red-500 text-sm h-fit">Remove</button>
                     </li>
                   ))}
                 </ul>
@@ -188,7 +190,7 @@ export default function Header() {
                         <h4 className="font-semibold text-sm">{item.name}</h4>
                         <p className="text-muted text-sm">${item.price}</p>
                       </div>
-                      <button onClick={() => toggleFavorite(item)} className="text-red-500 text-sm h-fit">Remove</button>
+                      <button onClick={() => { toggleFavorite(item); toast(`${item.name} removed from favorites`, "error"); }} className="text-red-500 text-sm h-fit">Remove</button>
                     </li>
                   ))}
                 </ul>
