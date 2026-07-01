@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
 import { useReveal } from "@/lib/useReveal";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const { ref, revealed } = useReveal(0.15);
+  const timerRef = useRef<NodeJS.Timeout>(undefined);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -33,6 +34,9 @@ export default function Newsletter() {
       setStatus("success");
       setEmail("");
     }
+
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setStatus("idle"), 3000);
   };
 
   return (
