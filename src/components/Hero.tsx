@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProductMockup from "./ProductMockup";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
   const mockupRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
+  // Parallax effect for mockup
   useEffect(() => {
     const onScroll = () => {
       if (!heroRef.current || !mockupRef.current) return;
@@ -19,6 +22,32 @@ export default function Hero() {
     
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Magnetic button effect
+  useEffect(() => {
+    const onMouseMove = (e: MouseEvent) => {
+      if (!buttonRef.current) return;
+
+      const rect = buttonRef.current.getBoundingClientRect();
+      const buttonCenterX = rect.left + rect.width / 2;
+      const buttonCenterY = rect.top + rect.height / 2;
+
+      const distance = Math.hypot(e.clientX - buttonCenterX, e.clientY - buttonCenterY);
+      const maxDistance = 100;
+
+      if (distance < maxDistance) {
+        const angle = Math.atan2(e.clientY - buttonCenterY, e.clientX - buttonCenterX);
+        const pullDistance = (1 - distance / maxDistance) * 15;
+
+        buttonRef.current.style.transform = `translate(${Math.cos(angle) * pullDistance}px, ${Math.sin(angle) * pullDistance}px)`;
+      } else {
+        buttonRef.current.style.transform = "translate(0, 0)";
+      }
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    return () => window.removeEventListener("mousemove", onMouseMove);
   }, []);
 
   return (
@@ -64,9 +93,16 @@ export default function Hero() {
           
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
             <a
+              ref={buttonRef}
               href="#shop"
-              className="group relative flex h-14 items-center justify-center overflow-hidden rounded-full bg-foreground px-10 text-base font-bold text-background shadow-2xl transition-all hover:scale-105 hover:shadow-primary/30 active:scale-95"
+              className="group relative flex h-14 items-center justify-center overflow-hidden rounded-full bg-foreground px-10 text-base font-bold text-background shadow-2xl transition-all hover:shadow-primary/50 active:scale-95 will-change-transform"
+              style={{
+                boxShadow: "0 20px 40px rgba(124, 58, 237, 0.3), 0 0 60px rgba(124, 58, 237, 0.2)"
+              }}
             >
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+              
               <span className="relative z-10 flex items-center gap-2">
                 Pre-Order Now
                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -74,33 +110,34 @@ export default function Hero() {
             </a>
             <a
               href="#features"
-              className="group flex h-14 items-center justify-center gap-2 rounded-full border-2 border-border/80 bg-background/50 px-8 text-base font-bold text-foreground backdrop-blur-md transition-all hover:border-foreground/20 hover:bg-muted/10 active:scale-95"
+              className="group flex h-14 items-center justify-center gap-2 rounded-full border-2 border-border/80 bg-background/50 px-8 text-base font-bold text-foreground backdrop-blur-md transition-all hover:border-foreground/20 hover:bg-muted/10 active:scale-95 relative overflow-hidden"
             >
-              Explore Features
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <span className="relative">Explore Features</span>
             </a>
           </div>
           
           {/* Enhanced Social Proof / Stats */}
           <div className="mt-16 flex flex-wrap justify-center gap-6 lg:justify-start">
-            <div className="flex flex-col rounded-2xl border border-border/80 bg-card/60 px-6 py-4 backdrop-blur-sm shadow-sm transition-transform hover:-translate-y-1">
+            <div className="flex flex-col rounded-2xl border border-border/80 bg-card/60 px-6 py-4 backdrop-blur-sm shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/20 group cursor-pointer">
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-black text-foreground tracking-tighter">98</span>
+                <span className="text-4xl font-black text-foreground tracking-tighter transition-colors duration-300 group-hover:text-primary">98</span>
                 <span className="text-xl font-bold text-primary">%</span>
               </div>
               <span className="mt-1 text-xs font-bold text-muted uppercase tracking-widest">Accuracy</span>
             </div>
             
-            <div className="flex flex-col rounded-2xl border border-border/80 bg-card/60 px-6 py-4 backdrop-blur-sm shadow-sm transition-transform hover:-translate-y-1">
+            <div className="flex flex-col rounded-2xl border border-border/80 bg-card/60 px-6 py-4 backdrop-blur-sm shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-secondary/20 group cursor-pointer">
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-black text-foreground tracking-tighter">1</span>
+                <span className="text-4xl font-black text-foreground tracking-tighter transition-colors duration-300 group-hover:text-secondary">1</span>
                 <span className="text-xl font-bold text-secondary">ms</span>
               </div>
               <span className="mt-1 text-xs font-bold text-muted uppercase tracking-widest">Latency</span>
             </div>
             
-            <div className="flex flex-col rounded-2xl border border-border/80 bg-card/60 px-6 py-4 backdrop-blur-sm shadow-sm transition-transform hover:-translate-y-1">
+            <div className="flex flex-col rounded-2xl border border-border/80 bg-card/60 px-6 py-4 backdrop-blur-sm shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/20 group cursor-pointer">
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-black text-foreground tracking-tighter">14</span>
+                <span className="text-4xl font-black text-foreground tracking-tighter transition-colors duration-300 group-hover:text-primary">14</span>
                 <span className="text-xl font-bold text-primary">d</span>
               </div>
               <span className="mt-1 text-xs font-bold text-muted uppercase tracking-widest">Battery</span>

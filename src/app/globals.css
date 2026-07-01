@@ -9,7 +9,7 @@
   --color-primary-dark: #6d28d9;
   --color-secondary: #f97316;
   --color-accent: #f59e0b;
-  --color-muted: #6b7280;
+  --color-muted: #525252;
   --color-border: #e5e7eb;
   --color-card: #f9fafb;
   --color-card-hover: #f3f4f6;
@@ -34,7 +34,7 @@
   --color-primary-dark: #7c3aed;
   --color-secondary: #fb923c;
   --color-accent: #fbbf24;
-  --color-muted: #94a3b8;
+  --color-muted: #cbd5e1;
   --color-border: #334155;
   --color-card: #1e293b;
   --color-card-hover: #334155;
@@ -107,6 +107,24 @@
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.2; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(1.05); }
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }
 
 .animate-fade-up {

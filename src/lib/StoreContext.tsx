@@ -9,6 +9,7 @@ interface StoreContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
+  clearCart: () => void;
   favorites: Product[];
   toggleFavorite: (product: Product) => void;
   recentlyViewed: Product[];
@@ -73,6 +74,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setCart((prev) => prev.filter((item) => item.id !== productId));
   };
 
+  const clearCart = () => setCart([]);
+
   const toggleFavorite = (product: Product) => {
     setFavorites((prev) => {
       const exists = prev.find((item) => item.id === product.id);
@@ -94,6 +97,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         cart,
         addToCart,
         removeFromCart,
+        clearCart,
         favorites,
         toggleFavorite,
         recentlyViewed,

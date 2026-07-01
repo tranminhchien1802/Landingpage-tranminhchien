@@ -1,15 +1,41 @@
 "use client";
 
 import { useReveal } from "@/lib/useReveal";
+import { useRef } from "react";
 
 export default function Features() {
   const { ref, revealed } = useReveal(0.1);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+  };
+
   return (
-    <section id="features" className="px-4 py-16 sm:py-24" ref={ref}>
+    <section id="features" className="px-4 py-16 sm:py-24 relative overflow-hidden" ref={ref}>
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-b from-primary/5 to-transparent rounded-full blur-3xl animate-pulse" />
+      </div>
+
       <div className="mx-auto max-w-7xl">
         <div
-          className={`text-center transition-all duration-700 ${
+          className={`text-center transition-all duration-700 mb-16 ${
             revealed ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
@@ -17,30 +43,47 @@ export default function Features() {
             Engineered for Peak Performance
           </h2>
           <p className="mt-4 text-muted">
-            Every metric matters. AeroSpike Pro captures what your body does in
-            motion.
+            Every metric matters. AeroSpike Pro captures what your body does in motion.
           </p>
         </div>
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        {/* Clean 3-Column Grid */}
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <div
               key={f.title}
-              className={`group rounded-2xl border border-border bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 ${
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className={`group relative rounded-2xl border border-border/60 bg-card/40 backdrop-blur-sm p-8 transition-all duration-500 cursor-pointer overflow-hidden h-full ${
                 revealed
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-primary group-hover:text-white">
-                {f.icon}
+              {/* Gradient border animation */}
+              <div className="absolute inset-0 rounded-2xl p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_200%] animate-[gradient_3s_ease_infinite]" />
               </div>
-              <h3 className="text-lg font-semibold transition-colors duration-500 group-hover:text-primary">
-                {f.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                {f.description}
-              </p>
+
+              {/* Glow effect on hover */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 text-primary transition-all duration-500 group-hover:scale-125 group-hover:rotate-6 group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/50">
+                  {f.icon}
+                </div>
+                <h3 className="text-lg font-semibold transition-colors duration-500 group-hover:text-primary">
+                  {f.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted group-hover:text-muted/80 transition-colors duration-500 flex-grow">
+                  {f.description}
+                </p>
+              </div>
+
+              {/* Corner accent */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           ))}
         </div>

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useStore } from "@/lib/StoreContext";
 import { useToast } from "@/lib/ToastContext";
 import { useTheme } from "@/lib/ThemeContext";
+import CheckoutModal from "./CheckoutModal";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -16,6 +17,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [favOpen, setFavOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   
   const { cart, removeFromCart, favorites, toggleFavorite } = useStore();
   const { toast } = useToast();
@@ -159,7 +161,7 @@ export default function Header() {
                   <span>Total</span>
                   <span>${cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}</span>
                 </div>
-                <button className="w-full bg-primary text-white py-3 rounded-full font-bold hover:bg-primary-dark transition-colors">
+                <button onClick={() => { setCartOpen(false); setCheckoutOpen(true); }} className="w-full bg-primary text-white py-3 rounded-full font-bold hover:bg-primary-dark transition-colors">
                   Checkout
                 </button>
               </div>
@@ -199,6 +201,8 @@ export default function Header() {
           </div>
         </div>
       )}
+
+      {checkoutOpen && <CheckoutModal onClose={() => setCheckoutOpen(false)} />}
     </>
   );
 }

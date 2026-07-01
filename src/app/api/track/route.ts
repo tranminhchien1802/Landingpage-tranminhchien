@@ -19,3 +19,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 }
+
+export async function GET() {
+  return NextResponse.json({ total: events.length, events });
+}
